@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 信息整理与索引手记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #fcedda 0%, #fde8cd 40%, #f8dbbc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #3b2e26;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 249, 240, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 42px 18px 42px 18px;
+            box-shadow: 0 12px 28px rgba(180, 120, 70, 0.15), 0 4px 12px rgba(160, 100, 50, 0.08);
+            padding: 2.8rem 2.6rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .card {
+                padding: 2rem 1.4rem;
+                border-radius: 30px 12px 30px 12px;
+            }
+        }
+
+        /* 温和开场 */
+        .opening {
+            font-size: 1.7rem;
+            font-weight: 340;
+            letter-spacing: 1px;
+            color: #6b4f38;
+            margin-bottom: 1.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px dotted #e6d3be;
+        }
+
+        .opening::before {
+            content: "📄 ";
+            font-size: 1.8rem;
+            margin-right: 4px;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            color: #4d3a2b;
+            margin-bottom: 1.6rem;
+            background: #f8f0e6;
+            padding: 1.2rem 1.4rem;
+            border-radius: 24px 8px 24px 8px;
+            box-shadow: inset 0 1px 4px rgba(140, 90, 50, 0.06);
+        }
+
+        .intro-text strong {
+            color: #855f40;
+            font-weight: 500;
+        }
+
+        /* 承接段落 */
+        .bridge {
+            margin: 1.8rem 0 2rem 0;
+            font-size: 1rem;
+            padding: 0 0.2rem;
+        }
+
+        .bridge p {
+            margin-bottom: 0.9rem;
+        }
+
+        /* 特点列表 —— 卡片感，温和圆角 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 2rem 0 1.6rem 0;
+        }
+
+        .feature-item {
+            background: #fff8ef;
+            border: 1px solid #eddccb;
+            border-radius: 30px 10px 30px 10px;
+            padding: 1rem 1.4rem 1rem 1.6rem;
+            flex: 1 1 200px;
+            box-shadow: 0 3px 8px rgba(170, 120, 70, 0.06);
+            transition: transform 0.1s, background 0.1s;
+        }
+
+        .feature-item:hover {
+            background: #fff2e3;
+            transform: translateY(-2px);
+        }
+
+        .feature-item span {
+            display: inline-block;
+            background: #dbbd9f;
+            color: #382c22;
+            border-radius: 40px;
+            padding: 0 12px 0 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .feature-item h4 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #4d3522;
+            margin: 0.2rem 0 0.3rem 0;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #5e4a39;
+            margin-top: 4px;
+        }
+
+        /* 温和结尾区域 */
+        .gentle-closing {
+            margin: 2.2rem 0 1.2rem 0;
+            padding: 1.2rem 0;
+            border-top: 1px solid #e6d1bd;
+            font-size: 1rem;
+        }
+
+        .gentle-closing p {
+            margin-bottom: 0.7rem;
+        }
+
+        .link-sentence {
+            background: #f6ece1;
+            padding: 0.9rem 1.2rem;
+            border-radius: 40px 14px 40px 14px;
+            display: inline-block;
+            margin-top: 0.4rem;
+        }
+
+        a {
+            color: #7f5c3c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #dbbd9f;
+            padding-bottom: 2px;
+            transition: border-color 0.15s, color 0.15s;
+            border-radius: 0 0 4px 4px;
+        }
+
+        a:hover {
+            color: #4d311e;
+            border-bottom-color: #9c7a5b;
+        }
+
+        .faq-note {
+            margin-top: 1.8rem;
+            background: #efe4d7;
+            border-radius: 28px 8px 28px 8px;
+            padding: 1rem 1.4rem;
+            font-size: 0.95rem;
+            color: #4a3a2e;
+        }
+
+        .faq-note summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #5e422e;
+            padding: 0.2rem 0;
+            list-style: none;
+        }
+
+        .faq-note summary::before {
+            content: "❓ ";
+            font-size: 0.9rem;
+        }
+
+        .faq-note p {
+            margin-top: 0.5rem;
+            padding-left: 0.2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e6cfb9;
+            margin: 1.6rem 0 0.2rem 0;
+            opacity: 0.5;
+        }
+
+        .small-meta {
+            font-size: 0.8rem;
+            color: #9b846f;
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        /* 按钮感链接 圆角 */
+        .button-link {
+            display: inline-block;
+            background: #e9d7c3;
+            padding: 0.2rem 0.9rem 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-weight: 450;
+            border-bottom: none;
+            transition: background 0.1s;
+        }
+
+        .button-link:hover {
+            background: #dcc6ae;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+
+    <div class="opening">
+        从散落的片段到有序的索引
+    </div>
+
+    <div class="intro-text">
+        <strong>雷速</strong> 所关心的，不只是信息的堆叠——它更像一位安静的整理者，将凌乱的数据流梳理成可以回溯、对照、再发现的脉络。在资料过载的时代，一份温和的索引本身，就是一种耐心。
+    </div>
+
+    <div class="bridge">
+        <p>长久以来，我们习惯收藏、标记、截取，但真正被再次翻阅的内容却寥寥。问题往往不在信息不足，而在于缺少一条可以反复走通的路径。<strong>雷速</strong> 正是从这个角度出发：不追求花哨的展示，而是帮你在文档、笔记、链接、短记之间建立轻巧的关联。</p>
+        <p>它更像一个侧台，让你在翻阅资料时，总能看到过去自己留下的线索——哪些段落曾被高亮，哪些想法曾短暂停留。这些痕迹，慢慢长成一张属于你自己的知识地图。</p>
+    </div>
+
+    <!-- 特点卡片 -->
+    <div class="feature-grid">
+        <div class="feature-item">
+            <span>整理</span>
+            <h4>脉络式索引</h4>
+            <p>不是文件夹的简单复制，而是像书签一样，把相关段落、页面、备注串联成线索。你可以沿着一条索引回溯最初的思路。</p>
+        </div>
+        <div class="feature-item">
+            <span>标记</span>
+            <h4>轻量高亮</h4>
+            <p>在资料中留下颜色记号，却不破坏原文的节奏。所有高亮条目自动汇集，方便你快速浏览某一主题下的重点片段。</p>
+        </div>
+        <div class="feature-item">
+            <span>回顾</span>
+            <h4>随机重现</h4>
+            <p>偶尔翻出某条旧索引，像是和过去的自己对话。这种不期而遇，往往比刻意思考带来更多灵光。</p>
+        </div>
+    </div>
+
+    <!-- 嵌入链接的自然句子，a标签可见文本严格等于“雷速” -->
+    <div style="margin: 0.2rem 0 1.2rem 0; padding-left: 0.2rem;">
+        <p>如果你也在寻找一种更安静的信息组织方式，不妨试试 <a href="https://appzh-leisu.com">雷速</a>——它不会催促你，只是在你需要整理思绪时，提供一个干净的落脚点。</p>
+    </div>
+
+    <!-- FAQ 摘要式 -->
+    <div class="faq-note">
+        <details>
+            <summary>一些常见疑问的简短回应</summary>
+            <p><strong>Q：雷速 适合整理哪类资料？</strong><br>A：文章、笔记、书摘、网页存档、项目碎片……凡是需要留下索引和关联的内容，都可以放入。它不限定格式，更侧重建立联系。</p>
+            <p><strong>Q：是否需要事先熟悉复杂操作？</strong><br>A：不必。核心动作只有“添加索引”和“标记高亮”，所有功能都围绕浏览和回顾展开。界面也尽量克制。</p>
+            <p><strong>Q：资料安全吗？</strong><br>A：索引数据只保存在你的设备本地，不强制上传。你可以随时导出或清理。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="gentle-closing">
+        <p>整理，不是为了囤积，而是为了在需要时，可以轻松地找到那条通往旧日思考的小路。信息的价值，常常在第二次翻阅时才真正浮现。</p>
+        <div class="link-sentence">
+            ✦ 如果你愿意，可以慢慢了解 <a href="https://appzh-leisu.com" class="button-link" style="background: transparent; padding:0; border-bottom: 2px solid #dbbd9f; border-radius:0;">雷速</a>，把它当作资料角落的一盏小灯。
+        </div>
+    </div>
+
+    <hr>
+    <div class="small-meta">
+        整理 · 索引 · 回顾
+    </div>
+
+</div>
+</body>
+</html>
