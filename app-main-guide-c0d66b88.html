@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻阅与对照 · 雷速小记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f3ed;
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            color: #2c2b28;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrapper {
+            max-width: 760px;
+            width: 100%;
+            margin: 2rem auto;
+            background: #fdfcf9;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border-radius: 12px;
+            border: 1px solid #e7e1d8;
+        }
+
+        /* 文章头部 */
+        .article-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e1d9cf;
+            padding-bottom: 1.2rem;
+        }
+
+        .article-header h1 {
+            font-size: 1.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #2f2a24;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .article-header .meta {
+            font-size: 0.85rem;
+            color: #8d857d;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 0.2rem;
+        }
+
+        /* 导语 */
+        .intro {
+            font-size: 1.1rem;
+            color: #3f3a34;
+            background: #f4efe9;
+            padding: 1.2rem 1.5rem;
+            border-left: 4px solid #b8aa99;
+            margin-bottom: 2rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* 正文段落 */
+        .content p {
+            margin-bottom: 1.4rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .content p:last-of-type {
+            margin-bottom: 1.8rem;
+        }
+
+        /* 引用提示框风格 */
+        .notice-box {
+            background: #f1ede7;
+            padding: 1.3rem 1.6rem;
+            border-radius: 8px;
+            margin: 1.8rem 0 2rem 0;
+            border: 1px solid #dcd3c9;
+            font-style: normal;
+        }
+
+        .notice-box strong {
+            color: #5f4f3d;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .notice-box .quote-icon {
+            font-size: 1.3rem;
+            color: #a3917d;
+            margin-right: 0.4rem;
+        }
+
+        /* 小标题 */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #4d4239;
+            margin: 1.8rem 0 0.8rem 0;
+            padding-left: 0.5rem;
+            border-left: 3px solid #cabbab;
+        }
+
+        /* 内联链接 */
+        a {
+            color: #7a6a58;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d1c4b6;
+            transition: all 0.15s ease;
+        }
+
+        a:hover {
+            color: #4e3f30;
+            text-decoration-color: #7a6a58;
+            background: #f1ebe3;
+        }
+
+        /* 访问句 —— 尾注风格 */
+        .colophon {
+            margin-top: 2.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2d9cf;
+            font-size: 0.95rem;
+            color: #73706b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .colophon .motto {
+            font-style: italic;
+            color: #958b80;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 560px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+
+            .page-wrapper {
+                padding: 1.8rem 1.2rem;
+                margin: 0.5rem auto;
+                border-radius: 8px;
+            }
+
+            .article-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+                padding: 1rem 1.2rem;
+            }
+
+            .notice-box {
+                padding: 1rem 1.1rem;
+            }
+
+            .colophon {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .article-header .meta {
+                font-size: 0.75rem;
+                gap: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <article>
+        <header class="article-header">
+            <h1>日常对照·延伸阅读</h1>
+            <div class="meta">
+                <span>翻阅手记</span>
+                <span>·</span>
+                <span>一种安静的查询习惯</span>
+            </div>
+        </header>
+
+        <div class="intro">
+            有时候我们需要的不是一次性的答案，而是一处可以反复参照、安静比对的角落。<br>
+            翻看、对照、再读——信息的价值往往在第二次打开时浮现。
+        </div>
+
+        <div class="content">
+            <p>前阵子整理笔记，发现自己在不同书页间记录了好几条相似的线索：关于名称的异译、数据的来源、某段叙述的起止年份。过去我会把找到的结果直接抄在纸边，但后来发现，真正有帮助的并非那行摘录，而是一种可以随时返回、重新核对的通路——就像书架上一本常被抽出的册子，每次翻开都能看到上次的折痕，也总能发现之前忽略的脚注。</p>
+
+            <p>这种反复参照的习惯，让我开始留意那些轻便而稳定的工具。不需要喧哗的引导，也不需要每次重新适应界面；只要打开，就能接着上一次的线索继续。无论是想确认一个名词的上下文，还是想从某条记录出发，进入另一层关联，流畅的检索与结构清晰的展示就变得很重要。<a href="https://app-main-leisu.com">雷速</a> 给我的感觉接近这类陪伴式的查询工具——没有多余的修饰，但条目与条目之间的跳转很顺，加载也快，适合在阅读间隙随手查阅。</p>
+
+            <div class="section-title">延伸，而非终止</div>
+            <p>很多时候我们把查询当作终点：找到一行解释，复制，关闭。但更耐用的方式其实是把查询当作一个中转站——顺着一条信息，发现另一条线索，再自然过渡到相关条目。就像翻字典时被隔壁词条吸引，或者在看注释时注意到参考文献里的另一本书。这种略带随机的延伸，往往比目标明确的搜索带来更多启发。</p>
+
+            <div class="notice-box">
+                <span class="quote-icon">❝</span><strong>翻阅提示：</strong> 当你对某个表述产生疑问时，不妨先把它记下来，隔半天再去对照。间隔的时间会让注意力更集中，也更容易看到之前忽略的细节——这是一种便宜却有效的阅读策略。
+            </div>
+
+            <p>也是因为这个原因，我越来越看重那些不急着给出“唯一答案”的界面。它们会保留上下文，会把相关条目放在附近，会在你点开一条记录后，依然让你看到来路。好的查询体验，不是把信息压缩成一行，而是把信息铺成一张可以走动的网。</p>
+
+            <p>最近我在试着调整自己的查阅节奏：不再追求一次弄懂，而是允许自己先标记、放一放，等下次打开时再接着看。这样一来，同一个条目会呈现出不同的层次。比如第一次只注意到标题，第二次看到注释里的时间，第三次才发现条目之间有一条隐约的逻辑线。慢一点，收获反而更密。</p>
+        </div>
+
+        <!-- 引用 / 提示区块（第二处）不同视觉 -->
+        <div class="notice-box" style="background: #f9f5f0; border-left: 4px solid #c6b6a3;">
+            <strong>📎 日常用法小记：</strong> 在阅读文献或整理笔记时，将需要核对的术语、人名或事件单独列出，之后集中对照。这种“延迟验证”能让阅读保持流畅，又不会遗漏关键细节。
+        </div>
+
+        <div class="colophon">
+            <span>翻阅愉快 · 常看常新</span>
+            <span class="motto">—— 延伸阅读本身也是一条路径</span>
+        </div>
+    </article>
+</div>
+</body>
+</html>
